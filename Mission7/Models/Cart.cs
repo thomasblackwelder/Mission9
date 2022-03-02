@@ -9,7 +9,7 @@ namespace Mission7.Models
     {
         public List<CartLineItem> Items { get; set; } = new List<CartLineItem>();
 
-        public void AddItem (Book B, int qty)
+        public virtual void AddItem (Book B, int qty)
         {
             CartLineItem line = Items
                 .Where(b => b.Book.BookId == B.BookId)
@@ -27,6 +27,18 @@ namespace Mission7.Models
             {
                 line.Quantity += qty;
             }
+        }
+
+        public virtual void RemoveItem (Book B)
+        {
+            // go to the <list> of books
+            // look in the list to see which books match the book ID and remove those. 
+            Items.RemoveAll(x => x.Book.BookId == B.BookId);
+        }
+
+        public virtual void ClearCart()
+        {
+            Items.Clear();
         }
 
         public double CalculateTotal()
