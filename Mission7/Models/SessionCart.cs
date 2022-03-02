@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Mission7.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,17 @@ namespace Mission7.Models
 {
     public class SessionCart : Cart
     {
+        public static Cart GetCart (IServiceProvider services)
+        {
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+
+            SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
+            // ^ asking if this is a new session or an old session 
+
+            return cart;
+        }
+
+
         // what does an ISession mean? 
         [JsonIgnore] // prevents and object from being serialized
         public ISession Session { get; set; }
