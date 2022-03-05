@@ -37,5 +37,10 @@ namespace Mission7.Pages
 
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
+
+        public IActionResult OnPostRemove()
+        {
+
+        }
     }
 }
