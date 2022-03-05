@@ -13,9 +13,10 @@ namespace Mission7.Pages
     {
         private IBookstoreRepository repo { get; set; }
 
-        public AddToCartModel (IBookstoreRepository temp)
+        public AddToCartModel (IBookstoreRepository temp, Cart c)
         {
             repo = temp;
+            cart = c;
         }
 
         public Cart cart { get; set; }
@@ -38,9 +39,11 @@ namespace Mission7.Pages
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
 
-        public IActionResult OnPostRemove()
+        public IActionResult OnPostRemove(int bookId, string returnUrl)
         {
+            cart.RemoveItem(cart.Items.First(x => x.Book.BookId == bookId).Book);
 
+            return RedirectToPage( new {returnUrl = returnUrl});
         }
     }
 }

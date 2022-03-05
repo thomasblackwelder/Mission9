@@ -18,6 +18,8 @@ namespace Mission7.Models
             SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
             // ^ asking if this is a new session or an old session 
 
+            cart.Session = session;
+
             return cart;
         }
 
