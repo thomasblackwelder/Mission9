@@ -9,9 +9,24 @@ namespace Mission7.Controllers
 {
     public class PurchaseController : Controller
     {
+        public PurchaseController()
+        {
+
+        }
+
+        [HttpGet]
         public IActionResult Checkout() //checkout is the view name. 
         {
             return View(new Purchase());
         }
+
+        [HttpPost]
+        public IActionResult Checkout(Purchase purchase)
+        {
+           
+        }
+
+
+
     }
 }
