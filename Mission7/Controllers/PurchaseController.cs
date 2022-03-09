@@ -36,6 +36,10 @@ namespace Mission7.Controllers
                 repo.SavePurchase(purchase);
                 cart.ClearCart();
 
+                return RedirectToPage("/PurchaseCompleted");
+            }
+            else
+            {
                 return View();
             }
 
