@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mission7.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -47,6 +48,11 @@ namespace Mission7.Models
             double sum = Items.Sum(x => x.Book.Price);
 
             return sum;
+        }
+
+        public static implicit operator Cart(CartSummaryViewComponent v)
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -10,10 +10,12 @@ namespace Mission7.Controllers
     public class PurchaseController : Controller
     {
         private IPurchaseRepository repo { get; set; }
+
         private Cart cart { get; set; }
         public PurchaseController(IPurchaseRepository temp, Cart c )
         {
             repo = temp;
+            cart = c;
         }
 
         [HttpGet]
@@ -44,9 +46,5 @@ namespace Mission7.Controllers
             }
 
         }
-
-
-
-
     }
 }

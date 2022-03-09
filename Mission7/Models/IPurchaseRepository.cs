@@ -9,6 +9,6 @@ namespace Mission7.Models
     {
         IQueryable<Purchase> Purchase { get; }
 
-        void SavePurchase(Purchase purchase)
+        void SavePurchase(Purchase purchase);
     }
 }
